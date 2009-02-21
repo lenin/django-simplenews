@@ -6,9 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 
 class Article(models.Model):
 
-    title = models.CharField(max_length=50)
-    content = models.TextField()
-    pub_date = models.DateTimeField(default=datetime.now, editable=False)
+    title = models.CharField(_(u'title'), max_length=50)
+    content = models.TextField(_(u'content'))
+    pub_date = models.DateTimeField(_(u'publication date'), default=datetime.now)
 
     class Meta:
         ordering = ['-pub_date']

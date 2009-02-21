@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-05 22:07-0700\n"
+"POT-Creation-Date: 2009-02-21 11:35-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:15
+#: models.py:9
+#, fuzzy
+msgid "title"
+msgstr "título"
+
+#: models.py:10
+msgid "content"
+msgstr "contenido"
+
+#: models.py:11
+msgid "publication date"
+msgstr "fecha de publicación"
+
+#: models.py:16
 msgid "article"
 msgstr "artículo"
 
-#: models.py:16
+#: models.py:17
 msgid "articles"
 msgstr "artículos"
