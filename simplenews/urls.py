@@ -1,8 +1,12 @@
 from django.conf.urls.defaults import *
 from django.views.generic import create_update, list_detail
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib.syndication.views import feed
 
 from simplenews.models import Article
+from simplenews.feeds import ArticlesFeed
+
+feeds = {'articles': ArticlesFeed}
 
 staff_required = user_passes_test(lambda u: u.is_staff)
 
@@ -10,6 +14,7 @@ create_update_info_dict = { 'model': Article }
 list_detail_info_dict = { 'queryset': Article.objects.all() }
 
 urlpatterns = patterns('',
+    (r'^feeds/(?P<url>.*)/$', feed, {'feed_dict': feeds}),
     url(r'^create/$',
         staff_required(create_update.create_object),
         create_update_info_dict,

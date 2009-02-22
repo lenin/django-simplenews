@@ -1,11 +1,9 @@
 from datetime import datetime
 
 from django.db import models
-from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
 
 class Article(models.Model):
-
     title = models.CharField(_(u'title'), max_length=50)
     content = models.TextField(_(u'content'))
     pub_date = models.DateTimeField(_(u'publication date'), default=datetime.now)
@@ -18,7 +16,6 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
-    @permalink
     def get_absolute_url(self):
         return ('news_detail', None, { 'object_id': self.id })
-
+    get_absolute_url = models.permalink(get_absolute_url)
