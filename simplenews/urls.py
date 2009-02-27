@@ -1,3 +1,4 @@
+import datetime
 from django.conf.urls.defaults import *
 from django.views.generic import create_update, list_detail
 from django.contrib.auth.decorators import user_passes_test
@@ -11,10 +12,12 @@ feeds = {'articles': ArticlesFeed}
 staff_required = user_passes_test(lambda u: u.is_staff)
 
 create_update_info_dict = { 'model': Article }
-list_detail_info_dict = { 'queryset': Article.objects.all() }
+list_detail_info_dict = {
+    'queryset': Article.objects.filter(pub_date__lte=datetime.datetime.now())
+}
 
 urlpatterns = patterns('',
-    (r'^feeds/(?P<url>.*)/$', feed, {'feed_dict': feeds}),
+    url(r'^feeds/(?P<url>.*)/$', feed, {'feed_dict': feeds}, name='news_feed'),
     url(r'^create/$',
         staff_required(create_update.create_object),
         create_update_info_dict,
