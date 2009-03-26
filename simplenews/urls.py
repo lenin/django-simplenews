@@ -13,7 +13,7 @@ staff_required = user_passes_test(lambda u: u.is_staff)
 
 create_update_info_dict = { 'model': Article }
 list_detail_info_dict = {
-    'queryset': Article.objects.filter(pub_date__lte=datetime.datetime.now())
+    'queryset': Article.objects.published(),
 }
 
 urlpatterns = patterns('',
